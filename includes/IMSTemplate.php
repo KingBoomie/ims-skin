@@ -13,67 +13,97 @@ class IMSTemplate extends BaseTemplate {
 		$html .= $this->get( 'headelement' );
 
 		$html .= Html::rawElement( 'div', [ 'id' => 'mw-wrapper' ],
-			Html::rawElement( 'div', [ 'class' => 'mw-body', 'role' => 'main' ],
-				$this->getSiteNotice() .
-				$this->getNewTalk() .
-				$this->getIndicators() .
-				Html::rawElement( 'h1',
-					[
-						'class' => 'firstHeading',
-						'lang' => $this->get( 'pageLanguage' )
-					],
-					$this->get( 'title' )
-				) .
-				Html::rawElement( 'div', [ 'id' => 'siteSub' ],
-					$this->getMsg( 'tagline' )->parse()
-				) .
-				Html::rawElement( 'div', [ 'class' => 'mw-body-content' ],
-					Html::rawElement( 'div', [ 'id' => 'contentSub' ],
-						$this->getPageSubtitle() .
-						Html::rawElement(
-							'p',
-							[],
-							$this->get( 'undelete' )
-						)
-					) .
-					$this->get( 'bodycontent' ) .
-					$this->getClear() .
-					Html::rawElement( 'div', [ 'class' => 'printfooter' ],
-						$this->get( 'printfooter' )
-					) .
-					$this->getCategoryLinks() .
-					$this->getDataAfterContent() .
-					$this->get( 'debughtml' )
-				)
-			) .
-			Html::rawElement( 'div', [ 'id' => 'mw-navigation' ],
+            // Global Sidebar
+            Html::rawElement( 'aside', [ 'id' => 'ims-sidebar' ],
+                $this->getLogo('ims-logo', true) .
+				// Site navigation/sidebar
 				Html::rawElement(
-					'h2',
-					[],
-					$this->getMsg( 'navigation-heading' )->parse()
-				) .
-				$this->getLogo() .
-				$this->getSearch() .
-				// User profile links
-				Html::rawElement(
-					'div',
-					[ 'id' => 'user-tools' ],
-					$this->getUserLinks()
+					'section',
+					[ 'id' => 'site-navigation' ],
+					$this->getSiteNavigation()
 				) .
 				// Page editing and tools
 				Html::rawElement(
-					'div',
+					'nav',
 					[ 'id' => 'page-tools' ],
 					$this->getPageLinks()
-				) .
-				// Site navigation/sidebar
-				Html::rawElement(
-					'div',
-					[ 'id' => 'site-navigation' ],
-					$this->getSiteNavigation()
 				)
 			) .
-			$this->getFooter()
+			// Header + Main + Footer
+			Html::rawElement('section', [ 'id' => 'main-wrapper' ],
+	            // Site Header
+				Html::rawElement(
+					'header',
+					[ 'id' => 'site-header' ],
+                    // User profile links
+					$this->getUserLinks() .
+                    $this->getSearch()
+				) .
+                // Page Content
+                Html::rawElement( 'main', [ 'class' => 'mw-body', 'role' => 'main' ],
+    				$this->getSiteNotice() .
+    				$this->getNewTalk() .
+    				$this->getIndicators() .
+    				Html::rawElement( 'h1',
+    					[
+    						'class' => 'firstHeading',
+    						'lang' => $this->get( 'pageLanguage' )
+    					],
+    					$this->get( 'title' )
+    				) .
+    				Html::rawElement( 'div', [ 'id' => 'siteSub' ],
+    					$this->getMsg( 'tagline' )->parse()
+    				) .
+    				Html::rawElement( 'section', [ 'class' => 'mw-body-content' ],
+    					Html::rawElement( 'div', [ 'id' => 'contentSub' ],
+    						$this->getPageSubtitle() .
+    						Html::rawElement(
+    							'p',
+    							[],
+    							$this->get( 'undelete' )
+    						)
+    					) .
+    					$this->get( 'bodycontent' ) .
+    					$this->getClear() .
+    					Html::rawElement( 'div', [ 'class' => 'printfooter' ],
+    						$this->get( 'printfooter' )
+    					) .
+    					$this->getCategoryLinks() .
+    					$this->getDataAfterContent() .
+    					$this->get( 'debughtml' )
+				    )
+    			) .
+                // Footer
+			    $this->getFooter()
+			)                                 
+
+			// Html::rawElement( 'div', [ 'id' => 'mw-navigation' ],
+			// 	Html::rawElement(
+			// 		'h2',
+			// 		[],
+			// 		$this->getMsg( 'navigation-heading' )->parse()
+			// 	) .
+			// 	$this->getLogo() .
+			// 	$this->getSearch() .
+			// 	// User profile links
+			// 	Html::rawElement(
+			// 		'div',
+			// 		[ 'id' => 'user-tools' ],
+			// 		$this->getUserLinks()
+			// 	) .
+			// 	// Page editing and tools
+			// 	Html::rawElement(
+			// 		'div',
+			// 		[ 'id' => 'page-tools' ],
+			// 		$this->getPageLinks()
+			// 	) .
+			// 	// Site navigation/sidebar
+			// 	Html::rawElement(
+			// 		'div',
+			// 		[ 'id' => 'site-navigation' ],
+			// 		$this->getSiteNavigation()
+			// 	)
+			// ) .
 		);
 
 		$html .= $this->getTrail();
@@ -368,7 +398,7 @@ class IMSTemplate extends BaseTemplate {
 			$contentText = $content;
 		}
 
-		$html = Html::rawElement( 'div', [
+		$html = Html::rawElement( 'nav', [
 				'role' => 'navigation',
 				'class' => 'mw-portlet',
 				'id' => Sanitizer::escapeId( 'p-' . $name ),
@@ -382,7 +412,7 @@ class IMSTemplate extends BaseTemplate {
 				],
 				$msgString
 			) .
-			Html::rawElement( 'div', [ 'class' => 'mw-portlet-body' ],
+			Html::rawElement( 'section', [ 'class' => 'mw-portlet-body' ],
 				$contentText .
 				$this->getAfterPortlet( $name )
 			)

@@ -2,25 +2,102 @@
 
 @import "variables.less";
 
-// Typography
+// Reset
 
-h1, h2, h3, h4, h5, h6 {
+html, body, h1, h2, h3, h4, h5, h6 {
   margin: 0;
   padding: 0;
 }
 
+#p-personal, #ims-sidebar {
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;      
+  }
+}
+
+// Typography
+
+body {
+  font-family: @text-typefaces;
+  font-size: @secondary-text-size;
+  line-height: @text-line-height;
+}
+
 // Page layout
 
+// hidden elements
+#page-tools h3,
+#p-search h3,
+#p-navigation h3,
+#p-tb h3,
+#p-personal h3 { .hidden; }
+#siteSub, .firstHeading { display: none; }
+
 #mw-wrapper {
-  max-width: @width;
-  //margin: 0 auto;
-  position: relative;
-  //padding: 1em;
+  display: grid;
+  grid-template-columns: 244px 1fr;
+  grid-gap: @grid-gap;
+  grid-auto-rows: minmax(100px, auto);
 }
-#p-logo {
-  text-align: center;
-  width: 10em;
-  float: right;
+
+#ims-sidebar {
+  background: @sidebar-bg;
+  color: @sidebar-fg;
+  padding: 0 2em;
+  font-weight: 300;
+  letter-spacing: .075ex;
+
+  a {
+    color: @sidebar-fg;
+    text-decoration: none;
+    &:hover, &:focus {
+      color: @accent-color-one;
+    }
+  }
+
+  nav {
+    padding-top: 1em;
+  }
+
+  #p-navigation {
+    font-size: @text-size;
+    font-weight: 500;
+  }
+  
+}
+
+#main-wrapper {
+  margin-right: @grid-gap;
+}
+
+#site-header {
+  padding: 1em 0;
+  display: flex;
+  justify-content: space-between;
+  min-height: 70px;
+
+  #p-personal {
+    ul {
+      display: flex;
+      li {
+	margin-right: 1.5em;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      &:hover, &:focus {
+	text-decoration: underline;
+      }
+    }
+  }
+}
+
+#ims-logo {
+  display: flex;
+  justify-content: center;
 
   // Make logo image visible
   // The class sets the background image from $wgLogo, but we still need to give it a size in order to show up
@@ -28,15 +105,26 @@ h1, h2, h3, h4, h5, h6 {
     display: block;
     content: '';
     width: 10em;
-    height: 10em;
+    height: 7em;
     background-repeat: no-repeat;
     background-position: 50% 50%;
   }
 }
+
+
 .mw-body {
   position: relative;
   word-wrap: break-word;
+  font-size: @text-size;
+  width: 914px;
 }
+
+
+
+
+
+
+
 
 // Some content stuff
 .firstHeading {
@@ -59,51 +147,5 @@ pre {
   text-align: center;
 }
 
-// Splatter the menus and tools at the bottom
-#mw-footer,
-#page-tools,
-#p-personal {
-  margin: 1em 0;
-
-  ul {
-    list-style-type: none;
-    margin: 0;
-  }
-  li {
-    padding-right: 1em;
-    display: inline-block;
-  }
-}
-#page-tools .mw-portlet {
-  display: inline-block;
-}
-#mw-navigation {
-  margin: 1em 0;
-}
 
 // Footer
-#mw-footer {
-  clear: both;
-  border-top: 1px solid @border;
-
-  ul {
-    margin-top: 1em;
-  }
-}
-#footer-icons {
-  float: right;
-  margin: 0 0 1em 1em;
-}
-
-// hidden stuff
-#page-tools h3,
-#p-search h3,
-#p-personal h3 {
-  .hidden;
-}
-
-// IMS styling
-
-#siteSub, .firstHeading {
-  display: none;
-}
