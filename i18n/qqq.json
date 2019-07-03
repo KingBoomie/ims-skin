@@ -1,0 +1,7 @@
+{
+	"@metadata": {
+		"authors": [ "Ihar Suvorau" ]
+	},
+	"skinname-ims": "{{optional}}",
+	"ims-desc": "{{desc|what=skin|name=Example|url=https://www.mediawiki.org/wiki/Skin:IMS}}"
+}

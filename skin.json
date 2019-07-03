@@ -1,0 +1,54 @@
+{
+	"name": "IMS",
+	"version": "1.0",
+	"author": "Ihar Suvorau",
+	"url": "https://www.mediawiki.org/wiki/Skin:IMS",
+	"descriptionmsg": "Intelligent Materials and Systems Lab of Technology Institute, University of Tartu, Estonia",
+	"namemsg": "skinname-ims",
+	"license-name": "CC0-1.0",
+	"type": "skin",
+	"ValidSkinNames": {
+		"ims": "IMS"
+	},
+	"MessagesDirs": {
+		"Example": [
+			"i18n"
+		]
+	},
+	"ResourceModules": {
+		"skins.ims": {
+			"class": "ResourceLoaderSkinModule",
+			"styles": {
+				"resources/libraries/normalise.css": {
+					"media": "screen"
+				},
+				"resources/screen-common.less": {
+					"media": "screen"
+				},
+				"resources/screen-desktop.less": {
+					"media": "screen and (min-width: 751px)"
+				},
+				"resources/screen-mobile.less": {
+					"media": "screen and (max-width: 750px)"
+				},
+				"resources/print.css": {
+					"media": "print"
+				}
+			}
+		},
+		"skins.ims.js": {
+			"scripts": [
+				"resources/main.js"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteSkinPath": "IMS"
+	},
+	"AutoloadClasses": {
+		"SkinIMS": "includes/SkinIMS.php",
+		"IMSTemplate": "includes/IMSTemplate.php"
+	},
+	"manifest_version": 1
+}
