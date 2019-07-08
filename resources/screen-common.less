@@ -9,7 +9,12 @@ html, body, h1, h2, h3, h4, h5, h6 {
   padding: 0;
 }
 
-#p-personal, #ims-sidebar {
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+#p-personal, #p-personal-mobile, #ims-sidebar, #ims-sidebar-mobile, #site-footer {
   ul {
     list-style-type: none;
     margin: 0;
@@ -23,31 +28,91 @@ body {
   font-family: @text-typefaces;
   font-size: @secondary-text-size;
   line-height: @text-line-height;
+  position: relative;
+  height: auto;
+  min-height: 100% !important;
 }
 
 // Page layout
 
 // hidden elements
-#page-tools h3,
+//#page-tools h3,
 #p-search h3,
 #p-navigation h3,
-#p-tb h3,
+//#p-tb h3,
 #p-personal h3 { .hidden; }
-#siteSub, .firstHeading { display: none; }
+#siteSub { display: none; }
 
 #mw-wrapper {
-  display: grid;
-  grid-template-columns: 244px 1fr;
-  grid-gap: @grid-gap;
-  grid-auto-rows: minmax(100px, auto);
+  min-width: 244px;
+  height: auto;
+  min-height: 100% !important;
+
+  @media (min-width: @bp-one) {
+    display: grid;
+    grid-template-columns: @sidebar-width 1fr;
+    grid-gap: @grid-gap;    
+    grid-auto-rows: minmax(100px, auto);
+  }
 }
 
+
+// Hiding the personal menu on mobile to the drawer
+#p-personal {
+  @media (max-width: (@bp-one - 1)) {
+    display: none;
+  }  
+}
+
+
+// Sidebars
+
+// Desktop only element
 #ims-sidebar {
+  display: none;
+  
+  @media (min-width: @bp-one) {
+    display: block;
+    z-index: 999;
+    box-shadow: none;
+  }
+}
+
+// Mobile only element
+#ims-sidebar-mobile {
+  display: none;
+  z-index: 999;
+  box-shadow: @sidebar-shadow;
+  width: 66%;
+  max-width: 20em;
+  height: 100%;
+  overflow-y: scroll;
+  padding: 1em 2em 0 2em;
+
+  &.active {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+// Mobile only button to show mobile sidebar
+#ims-sidebar-trigger {
+  display: none;
+  @media (max-width: (@bp-one - 1)) {
+    display: block;
+    margin-right: 1.5em;
+  }  
+}
+
+// Sidebars shared styling
+#ims-sidebar, #ims-sidebar-mobile {
   background: @sidebar-bg;
   color: @sidebar-fg;
   padding: 0 2em;
   font-weight: 300;
-  letter-spacing: .075ex;
+  letter-spacing: @dark-bg-letter-spacing;
 
   a {
     color: @sidebar-fg;
@@ -58,46 +123,69 @@ body {
   }
 
   nav {
-    padding-top: 1em;
+    padding: .75em 0;
   }
 
   #p-navigation {
     font-size: @text-size;
     font-weight: 500;
   }
-  
 }
 
-#main-wrapper {
-  margin-right: @grid-gap;
+.main-wrapper {
+  z-index: 1;
+
+  @media (max-width: (@bp-one - 1)) {
+    margin: 0 @grid-gap;
+  }
+  @media (min-width: @bp-one) {
+    margin-right: @grid-gap;
+  }
+
+  display: flex;
+  flex: 1 0 auto;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-#site-header {
+#content-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+}
+
+#site-header, #site-footer {
   padding: 1em 0;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   min-height: 70px;
 
-  #p-personal {
-    ul {
-      display: flex;
-      li {
-	margin-right: 1.5em;
-      }
-    }
-
-    a {
-      text-decoration: none;
-      &:hover, &:focus {
-	text-decoration: underline;
-      }
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    li {
+      margin-right: 1.5em;
     }
   }
+
+  a {
+    text-decoration: none;
+    &:hover, &:focus {
+      text-decoration: underline;
+    }
+  }
+}
+
+#site-footer {
+  align-items: end;
 }
 
 #ims-logo {
   display: flex;
   justify-content: center;
+  padding-top: 1em;
 
   // Make logo image visible
   // The class sets the background image from $wgLogo, but we still need to give it a size in order to show up
@@ -111,25 +199,68 @@ body {
   }
 }
 
-
 .mw-body {
   position: relative;
-  word-wrap: break-word;
-  font-size: @text-size;
-  width: 914px;
+  word-wrap: break-word;  
+  max-width: 914px;
+  padding: 1em 0;
+  flex: 1 0 auto;
+
+  .mw-parser-output {
+    font-size: @text-size;
+  }
+}
+
+#page-tools, #p-tb, #p-personal-mobile {
+  h3 {
+    font-size: @secondary-text-size * .6;
+    font-weight: normal;
+    letter-spacing: @dark-bg-letter-spacing * 20;
+    text-transform: uppercase;    
+  }
+}
+
+#userloginForm {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 
+&.page-Main_Page {
+  &.action-edit {
+    .firstHeading {
+      display: block !important;
+    }
+  }
 
-
-
-
-
-
-// Some content stuff
-.firstHeading {
-  margin-top: 0;
+  &.action-view {
+    .firstHeading {
+      display: none;
+    }    
+  }
 }
+
+// Elements
+
+hr {
+  height: 0;
+  border: none;
+  border-bottom: @solid-light-border;
+}
+
+.previewnote {
+  p {
+    text-indent: 0;
+    margin: 0;
+  }
+}
+
+.oo-ui-buttonElement-button {
+  line-height: initial;
+}
+
+
 
 .mw-indicators {
   float: right;
@@ -147,5 +278,17 @@ pre {
   text-align: center;
 }
 
+#editform {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  font-size: @secondary-text-size;
+}
 
-// Footer
+.fixed {
+  position: fixed;
+}
+
+.hidden {
+  display: none;
+}
