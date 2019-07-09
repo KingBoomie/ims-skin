@@ -1,10 +1,8 @@
-/* Common styling for the Example skin */
-
 @import "variables.less";
 
 // Reset
 
-html, body, h1, h2, h3, h4, h5, h6 {
+html, body, h1, h2, h3, h4, h5, h6, p, ul, ol, li {
   margin: 0;
   padding: 0;
 }
@@ -17,34 +15,28 @@ html, body {
 #p-personal, #p-personal-mobile, #ims-sidebar, #ims-sidebar-mobile, #site-footer {
   ul {
     list-style-type: none;
-    margin: 0;
-    padding: 0;      
   }
 }
 
-// Typography
+// Page ayout
 
 body {
   font-family: @text-typefaces;
-  font-size: @secondary-text-size;
-  line-height: @text-line-height;
+  //font-size: @secondary-text-size;
+  //line-height: @secondary-text-size * @text-ratio;
+  font-size: 1rem;
+  line-height: 1rem * @base-ratio;
   position: relative;
   height: auto;
   min-height: 100% !important;
   display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
-// Page layout
-
-// hidden elements
-//#page-tools h3,
-#p-search h3,
-#p-navigation h3,
-//#p-tb h3,
-#p-personal h3 { .hidden; }
-#siteSub { display: none; }
-
 #mw-wrapper {
+  display: flex;
+  flex-direction: column;
   flex: 1 0 auto;
   min-width: 244px;
   height: auto;
@@ -53,23 +45,34 @@ body {
   @media (min-width: @bp-one) {
     display: grid;
     grid-template-columns: @sidebar-width 1fr;
-    grid-gap: @grid-gap;    
+    grid-gap: 1rem * @base-ratio;    
     grid-auto-rows: minmax(100px, auto);
   }
 }
 
+.main-wrapper {
+  display: flex;
+  flex: 1 0 auto;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 1;
 
-// Hiding the personal menu on mobile to the drawer
-#p-personal {
   @media (max-width: (@bp-one - 1)) {
-    display: none;
-  }  
+    margin: 0 1rem;
+  }
+  @media (min-width: @bp-one) {
+    margin-right: 1rem * @base-ratio;
+  }
 }
 
+#top-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+}
 
-// Sidebars
-
-// Desktop only element
+// Desktop only sidebar
 #ims-sidebar {
   display: none;
   
@@ -80,7 +83,7 @@ body {
   }
 }
 
-// Mobile only element
+// Mobile only sidebar
 #ims-sidebar-mobile {
   display: none;
   z-index: 999;
@@ -89,7 +92,6 @@ body {
   max-width: 20em;
   height: 100%;
   overflow-y: scroll;
-  padding: 1em 2em 0 2em;
 
   &.active {
     display: block;
@@ -99,12 +101,11 @@ body {
   }
 }
 
-// Mobile only button to show mobile sidebar
+// Mobile only button to show the mobile sidebar
 #ims-sidebar-trigger {
   display: none;
   @media (max-width: (@bp-one - 1)) {
     display: block;
-    margin-right: 1.5em;
   }  
 }
 
@@ -112,20 +113,21 @@ body {
 #ims-sidebar, #ims-sidebar-mobile {
   background: @sidebar-bg;
   color: @sidebar-fg;
-  padding: 0 2em;
+  padding: 0 (1rem * @base-ratio);
   font-weight: 300;
-  letter-spacing: @dark-bg-letter-spacing;
+  letter-spacing: .1ex;
 
   a {
     color: @sidebar-fg;
     text-decoration: none;
+ 
     &:hover, &:focus {
       color: @accent-color-one;
     }
   }
 
   nav {
-    padding: .75em 0;
+    padding: (1rem / @base-ratio) 0;
   }
 
   #p-navigation {
@@ -134,27 +136,11 @@ body {
   }
 }
 
-.main-wrapper {
-  z-index: 1;
-
+// Hiding the personal menu on mobile. #p-personal-mobile will be displayed instead.
+#p-personal {
   @media (max-width: (@bp-one - 1)) {
-    margin: 0 @grid-gap;
-  }
-  @media (min-width: @bp-one) {
-    margin-right: @grid-gap;
-  }
-
-  display: flex;
-  flex: 1 0 auto;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-#content-wrapper {
-  display: flex;
-  flex-direction: column;
-  flex: 1 0 auto;
+    display: none;
+  }  
 }
 
 #site-header {
@@ -164,26 +150,43 @@ body {
 }
 
 #site-header, #site-footer {
-  padding: 1em 0;
+  padding: 1rem 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   min-height: 70px;
+  font-size: .8rem;
+  line-height: (1rem * @base-ratio) * .8;
 
   ul {
     display: flex;
     flex-wrap: wrap;
     li {
-      margin-right: 1.5em;
+      margin-right: 1rem * @base-ratio;
     }
   }
 
   a {
     text-decoration: none;
+    transition: @base-transition;
+
+    &:link, &:visited {
+      color: black;
+    }
+
+    &.new {
+      color: hsl(10,80%,40%);
+    }
+    
     &:hover, &:focus {
-      text-decoration: underline;
+      color: @accent-color-one-dark;
+      //text-decoration: underline;
     }
   }
+}
+
+a.new {
+  color: hsl(10,80%,40%);
 }
 
 #site-footer {
@@ -193,15 +196,15 @@ body {
 #ims-logo {
   display: flex;
   justify-content: center;
-  padding-top: 1em;
+  padding-top: 1rem;
 
   // Make logo image visible
   // The class sets the background image from $wgLogo, but we still need to give it a size in order to show up
   a.mw-wiki-logo {
     display: block;
     content: '';
-    width: 10em;
-    height: 7em;
+    width: 10rem;
+    height: 7rem;
     background-repeat: no-repeat;
     background-position: 50% 50%;
   }
@@ -210,20 +213,21 @@ body {
 .mw-body {
   position: relative;
   word-wrap: break-word;  
-  max-width: 914px;
-  padding: 1em 0;
+  max-width: 60rem;
+  padding: 1rem 0;
   flex: 1 0 auto;
 
   .mw-parser-output {
     font-size: @text-size;
+    line-height: @text-size * @text-ratio;
   }
 }
 
 #page-tools, #p-tb, #p-personal-mobile {
   h3 {
-    font-size: @secondary-text-size * .6;
+    font-size: .5rem;
     font-weight: normal;
-    letter-spacing: @dark-bg-letter-spacing * 20;
+    letter-spacing: 1ex * @base-ratio;
     text-transform: uppercase;    
   }
 }
@@ -249,40 +253,163 @@ body {
   }
 }
 
+// Typography
+
+p {
+  margin: 1rem 0;
+}
+
+// main title of the main page
+.page-Main_Page h1 {
+  font-family: 'Aino-Headline';
+  text-transform: lowercase;
+  font-weight: 100;
+
+  .mw-editsection {
+    font-family: @text-typefaces;
+  }
+}
+
+body {
+  &.action-edit {
+    .firstHeading {
+      font-size: 3rem;
+      line-height: 3rem;
+      font-family: @text-typefaces;
+      text-transform: none;
+      font-weight: bold;
+      margin: 0 0 1rem 0 !important;
+    }
+  }
+
+  &.page-Main_Page h1, .firstHeading {
+    font-family: 'Aino-Headline';
+    font-size: 4.5rem;
+    line-height: 4.5rem;      
+    text-transform: lowercase;
+    font-weight: 100;
+    margin: 0 0 1rem 0 !important;
+  }
+}
+
+.mw-editsection {
+  font-family: @text-typefaces;
+}
+
+#mw-content-text {
+  margin-top: 1.65rem;
+}
+
+.mw-body-content {
+  #contentSub {
+    font-size: .8rem;
+    line-height: (1rem * @base-ratio) * .8;
+  }
+
+  h1 {
+    font-size: 3.25rem;
+    line-height: 3.25rem;
+    margin: (1rem * @base-ratio * 2.25) 0 1rem 0;
+  }
+
+  h2 {
+    font-size: 2.25rem;
+    line-height: 2.25rem;
+    margin: (1rem * @base-ratio * 1.75) 0 1rem 0;
+  }
+
+  h3 {
+    font-size: 1.75rem;
+    line-height: 1.75rem;
+    margin: (1rem * @base-ratio * 1.35) 0 1rem 0;
+  }
+
+  h4 {
+    font-size: 1.4rem;
+    line-height: 1.4rem;
+    margin: (1rem * @base-ratio * 1.15) 0 1rem 0;
+  }
+
+  h5 {
+    font-size: 1rem;
+    line-height: 1rem;
+    margin: (1rem * @base-ratio) 0 1rem 0;
+    text-transform: uppercase;
+    letter-spacing: .618ex;
+
+    .mw-editsection {
+      text-transform: none;
+      letter-spacing: 0;
+    }
+  }
+
+  h6 {
+    font-size: 1rem;
+    line-height: 1rem;
+    margin: (1rem * @base-ratio) 0 1rem 0;
+  }  
+}
+
 // Elements
 
-// .firstHeading {
-//   margin-top: 0;
-//   font-size: 36px;
-//   line-height: @text-line-height * 1.35;
-// }
+small {
+  font-size: .8rem;
+  line-height: (1rem * @base-ratio) * .8;
+}
 
-// h1.mw-headline {
-//   font-size: 36px;
-//   line-height: @text-line-height * 1.35;
-// }
+.mw-body {
+  ul {
+    list-style-type: square;
+  }
 
-// h2.mw-headline {
-//   font-size: 24px;
-//   line-height: @text-line-height * 1.15;
-// }
+  ul, ol {
+    margin: 0 0 0 1rem;
 
-// h1 {
-//   line-height: @text-line-height * 1.35;
-//   font-size: 36px;
-// }
+    li {
+      margin-bottom: .16rem;
+    }
+  }
 
-// h2 {
-//   line-height: @text-line-height * 1.15;
-//   font-size: 24px;
-// }
+  a {
+    &:link {
+      color: rgb(0,0,238);
+    }
+  }
+}
 
-// h1, h2, h3, h4, h5, h6 {
-//   .mw-headline {
-//     display: inline-block;
-//     margin: (@base-margin * 2) 0 (@base-margin * .25) 0;    
-//   }
-// }
+a {
+  transition: @base-transition;
+}
+
+#searchInput {
+  .reset-form-field();
+  border-bottom: 2px solid @sidebar-bg;
+  padding: .3rem 0;
+  width: 18vw;
+  min-width: 12rem;
+}
+
+::placeholder {
+  color: black;
+  opacity: 1;
+}
+
+.searchButton {
+  .reset-form-field();
+  font-weight: bold;
+  font-size: 1rem;
+  transition: @base-transition;
+
+  &:hover, &:focus {
+    color: @accent-color-one-dark;
+  }
+}
+
+// hidden elements
+#p-search h3,
+#p-navigation h3,
+#p-personal h3 { .hidden; }
+#siteSub { display: none; }
 
 hr {
   height: 0;
@@ -301,52 +428,81 @@ hr {
   line-height: initial;
 }
 
+.catlinks {
+  padding: .618rem 1rem;
+  margin: (1rem * @base-ratio) 0;
+  background: hsla(245, 62%, 88%, 10%);
+  border: 1px solid hsla(245, 62%, 88%, 60%);
+  max-width: max-content;
+}
+
 .toc {
-  font-size: @text-size;
-  padding: .5em 1em;
-  margin: 1em 0;
-  background: #f8f9fa;
-  border: 1px solid #a2a9b1;
+  padding: .618rem 1rem;
+  margin: (1rem * @base-ratio) 0;
+  background: hsla(245, 62%, 88%, 10%);
+  border: 1px solid hsla(245, 62%, 88%, 60%);
   max-width: max-content;
 
   .toctogglespan {
     font-size: small;
   }
+
+  .toctitle {
+    text-align: center;
+  }
   
   h2 {
     display: inline-block;
-    font-size: @text-size;
+    font-size: 1em;
     text-align: center;
     margin: 0;
   }
 
   a {
     text-decoration: none;
+    font-weight: normal;
+
+    &:hover, &:focus {
+      font-weight: normal;
+    }
 
     .toctext {
       &:hover, &:focus {
 	text-decoration: underline;
-      }      
+      }
     }
-  }
 
-  .tocnumber {
-    text-decoration: none;
-    color: @text-color;
+    .tocnumber {
+      text-decoration: none;
+      color: @text-color;
+    }    
   }
 
   ul {
     list-style-type: none;
-    margin: .5em 0 0 0;
-    padding: 0;      
+    margin: 0;
+    padding: 0;
+
+    // nested lists
+    ul {
+      margin-left: 1rem !important;
+    }
   }
+}
+
+#editform {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  font-size: .8rem;
+  line-height: (1rem * @base-ratio) * .8;
 }
 
 // ---
 
 .mw-indicators {
   float: right;
-  margin: 1.5em 0 0 1em;
+  margin: 1.5rem 0 0 1rem;
 }
 
 pre {
@@ -360,12 +516,6 @@ pre {
   text-align: center;
 }
 
-#editform {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  font-size: @secondary-text-size;
-}
 
 .fixed {
   position: fixed;

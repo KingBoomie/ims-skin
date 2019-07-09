@@ -50,7 +50,7 @@ class IMSTemplate extends BaseTemplate {
 			// Header + Main + Footer
 			Html::rawElement('section', [ 'class' => 'main-wrapper' ],
                 // Header + Main
-                Html::rawElement('section', [ 'id' => 'content-wrapper' ],
+                Html::rawElement('section', [ 'id' => 'top-wrapper' ],
     	            // Site Header
     				Html::rawElement(
     					'header',
@@ -196,7 +196,7 @@ class IMSTemplate extends BaseTemplate {
 			Html::label( $this->getMsg( 'search' )->escaped(), 'searchInput' )
 		);
 		$html .= $this->makeSearchInput( [ 'id' => 'searchInput' ] );
-		$html .= $this->makeSearchButton( 'go', [ 'id' => 'searchGoButton', 'class' => 'searchButton' ] );
+		$html .= $this->makeSearchButton( 'fulltext', [ 'id' => 'searchGoButton', 'class' => 'searchButton' ] );
 		$html .= Html::closeElement( 'form' );
 
 		return $html;

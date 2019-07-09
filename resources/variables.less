@@ -1,30 +1,53 @@
 // @import "mediawiki.mixins"; Not used yet
 
+@width: 66em;
+
 // breakpoints
 @bp-one: 900px;
 @bp-two: 667px;
 @bp-three: 375px;
 
-@width: 66em;
-@border: #ccc;
-@text-typefaces: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
-@text-size: 18px;
-@secondary-text-size: @text-size * .78;
-@text-line-height: @text-size * 1.5;
+// colors
+@accent-color-one: hsl(161,100%,73%);
+@accent-color-one-dark: hsl(161,100%,43%);
+@accent-color-two: hsl(245,62%,88%);
+
+// typography
+@font-face {
+  font-family: 'Aino-Headline';
+  src: url('fonts/Aino-Headline.otf')
+}
 @text-color: black;
+@text-typefaces: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+@text-size: 1.125rem;
+@secondary-text-size: @text-size * .78;
+@text-line-height: @text-size * @text-ratio;
+@text-ratio: 1.5;
+
+// elements
+@border: #ccc;
 @base-margin: 1em;
-@grid-gap: 20px;
+@base-ratio: 1.618;
+@grid-gap: @base-margin * 2;
 @solid-light-border: 1px solid lighten(@sidebar-bg, 80%);
 @sidebar-bg: hsl(0,0%,10%);
 @sidebar-fg: white;
 @sidebar-shadow: .5em .5em 2.5em hsla(0,0,0,80%);
 @sidebar-width: 244px;
 @dark-bg-letter-spacing: .075ex;
-@accent-color-one: hsl(161,100%,73%);
-@accent-color-two: hsl(245,62%,88%);
+@base-transition: all .1s ease-in;
 
 // To hide objects, but keep them accessible for screen-readers
 .hidden() {
 	position: absolute;
 	top: -9999px;
+}
+
+.reset-form-field {
+  border:none;
+  background-image:none;
+  background-color:transparent;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;  
 }
