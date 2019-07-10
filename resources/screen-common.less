@@ -256,36 +256,10 @@ a.new {
   justify-content: center;
 }
 
-
-&.page-Main_Page {
-  &.action-edit, &.action-submit {
-    .firstHeading {
-      display: block !important;
-    }
-  }
-
-  &.action-view {
-    .firstHeading {
-      display: none;
-    }    
-  }
-}
-
 // Typography
 
 p {
   margin: 1rem 0;
-}
-
-// main title of the main page
-.page-Main_Page h1 {
-  font-family: 'Aino-Headline';
-  text-transform: lowercase;
-  font-weight: 100;
-
-  .mw-editsection {
-    font-family: @text-typefaces;
-  }
 }
 
 body {
@@ -300,7 +274,7 @@ body {
     }
   }
 
-  &.page-Main_Page h1, .firstHeading {
+  .firstHeading {
     font-family: 'Aino-Headline';
     text-transform: lowercase;
     font-weight: 100;
@@ -392,6 +366,11 @@ a {
       text-decoration: none;
     }
 
+    &:visited {
+      color: @accent-color-three-dark;
+      text-decoration: none;
+    }
+
     &:hover, &:focus {
       color: black;
     }
@@ -449,6 +428,7 @@ a {
     color: black;
   }
 }
+
 // Elements
 
 small {
