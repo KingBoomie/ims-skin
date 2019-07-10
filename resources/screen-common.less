@@ -88,7 +88,7 @@ body {
   display: none;
   z-index: 999;
   box-shadow: @sidebar-shadow;
-  width: 66%;
+  width: 60%;
   max-width: 20em;
   height: 100%;
   overflow-y: scroll;
@@ -106,7 +106,22 @@ body {
   display: none;
   @media (max-width: (@bp-one - 1)) {
     display: block;
-  }  
+  }
+}
+
+#ims-sidebar-trigger-icon {
+  height: 25px;
+  width: 35px;
+  // background: url('../resources/menu.svg') no-repeat top left;
+  // background-size: contain;
+  mask: url('../resources/menu.svg') no-repeat top left;
+  mask-size: cover;
+  background: black;
+  transition: @base-transition;
+
+  &:hover, &:active {
+    background: @accent-color-one-dark;
+  }
 }
 
 // Sidebars shared styling
@@ -172,6 +187,10 @@ body {
 
     &:link, &:visited {
       color: black;
+
+      @media (max-width: (@bp-one - 1)) {
+	text-decoration: underline;
+      }
     }
 
     &.new {
@@ -180,7 +199,6 @@ body {
     
     &:hover, &:focus {
       color: @accent-color-one-dark;
-      //text-decoration: underline;
     }
   }
 }
@@ -240,7 +258,7 @@ a.new {
 
 
 &.page-Main_Page {
-  &.action-edit {
+  &.action-edit, &.action-submit {
     .firstHeading {
       display: block !important;
     }
@@ -271,7 +289,7 @@ p {
 }
 
 body {
-  &.action-edit {
+  &.action-edit, &.action-submit {
     .firstHeading {
       font-size: 3rem;
       line-height: 3rem;
@@ -284,11 +302,20 @@ body {
 
   &.page-Main_Page h1, .firstHeading {
     font-family: 'Aino-Headline';
-    font-size: 4.5rem;
-    line-height: 4.5rem;      
     text-transform: lowercase;
     font-weight: 100;
     margin: 0 0 1rem 0 !important;
+    word-wrap: anywhere;
+
+    @media (min-width: @bp-one) {
+      font-size: 4.5rem;
+      line-height: 4.5rem;
+    }
+    
+    @media (max-width: (@bp-one - 1)) {
+      font-size: 2.5rem;
+      line-height: 2.5rem;
+    }
   }
 }
 
@@ -297,7 +324,7 @@ body {
 }
 
 #mw-content-text {
-  margin-top: 1.65rem;
+  //margin-top: 1.65rem;
 }
 
 .mw-body-content {
@@ -350,6 +377,78 @@ body {
   }  
 }
 
+// Links
+
+a {
+  transition: @base-transition;
+}
+
+.mw-body {
+  a {
+    transition: @base-transition;
+
+    &:link, &:visited {
+      color: @accent-color-one-dark;
+      text-decoration: none;
+    }
+
+    &:hover, &:focus {
+      color: black;
+    }
+  }
+}
+
+.searchButton {
+  .reset-form-field();
+  font-weight: bold;
+  font-size: 1rem;
+  transition: @base-transition;
+
+  &:hover, &:focus {
+    color: @accent-color-one-dark;
+  }
+}
+
+.catlinks {
+  padding: .618rem 1rem;
+  margin: (1rem * @base-ratio) 0;
+  background: hsla(245, 62%, 88%, 10%);
+  border: 1px solid hsla(245, 62%, 88%, 60%);
+  max-width: max-content;
+
+  a {
+    text-decoration: none;
+
+    // &:hover, &:focus {
+    //   text-decoration: underline;
+    // }
+  }  
+}
+
+.toc {
+  a {
+    text-decoration: none;
+
+    &:hover, &:focus {
+      text-decoration: none;
+    }
+
+    .tocnumber {
+      text-decoration: none;
+      color: @text-color;
+    }
+  }
+}
+
+.toctogglelabel {
+  color: @accent-color-one-dark;
+  text-decoration: none;
+
+  &:hover, &:focus {
+    text-decoration: none;
+    color: black;
+  }
+}
 // Elements
 
 small {
@@ -369,16 +468,6 @@ small {
       margin-bottom: .16rem;
     }
   }
-
-  a {
-    &:link {
-      color: rgb(0,0,238);
-    }
-  }
-}
-
-a {
-  transition: @base-transition;
 }
 
 #searchInput {
@@ -390,19 +479,14 @@ a {
 }
 
 ::placeholder {
-  color: black;
+  color: white;
   opacity: 1;
 }
 
-.searchButton {
-  .reset-form-field();
-  font-weight: bold;
-  font-size: 1rem;
-  transition: @base-transition;
-
-  &:hover, &:focus {
-    color: @accent-color-one-dark;
-  }
+#p-search {
+  display: flex;
+  height: 2rem;
+  margin-top: -.3rem;
 }
 
 // hidden elements
@@ -428,17 +512,9 @@ hr {
   line-height: initial;
 }
 
-.catlinks {
-  padding: .618rem 1rem;
-  margin: (1rem * @base-ratio) 0;
-  background: hsla(245, 62%, 88%, 10%);
-  border: 1px solid hsla(245, 62%, 88%, 60%);
-  max-width: max-content;
-}
-
 .toc {
   padding: .618rem 1rem;
-  margin: (1rem * @base-ratio) 0;
+  //margin: (1rem * @base-ratio) 0;
   background: hsla(245, 62%, 88%, 10%);
   border: 1px solid hsla(245, 62%, 88%, 60%);
   max-width: max-content;
@@ -456,26 +532,6 @@ hr {
     font-size: 1em;
     text-align: center;
     margin: 0;
-  }
-
-  a {
-    text-decoration: none;
-    font-weight: normal;
-
-    &:hover, &:focus {
-      font-weight: normal;
-    }
-
-    .toctext {
-      &:hover, &:focus {
-	text-decoration: underline;
-      }
-    }
-
-    .tocnumber {
-      text-decoration: none;
-      color: @text-color;
-    }    
   }
 
   ul {

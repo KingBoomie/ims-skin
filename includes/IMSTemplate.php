@@ -57,7 +57,7 @@ class IMSTemplate extends BaseTemplate {
     					[ 'id' => 'site-header' ],
                         // Mobile Only Menu Trigger
                         Html::rawElement( 'div', [ 'id' => 'ims-sidebar-trigger' ],
-                            "<a href='#'>Menu</a>"
+                            "<a href='#'><div id='ims-sidebar-trigger-icon'></div></a>"
                         ) .
                         // User profile links
     					$this->getUserLinks() .
