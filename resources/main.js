@@ -13,6 +13,10 @@ function initMobileMenu () {
   document.getElementsByTagName('body')[0].addEventListener('click', () => {
     hideMobileMenu();
   })
+  // // hide on touching for old browsers or smartphones and tablets
+  // document.getElementsByTagName('body')[0].addEventListener('touchend', () => {
+  //   hideMobileMenu();
+  // })
 
   // toggle the menu visibility while clicking on the menu button
   document.getElementById('ims-sidebar-trigger').addEventListener('click', (event) => {
@@ -22,9 +26,10 @@ function initMobileMenu () {
   })
 
   // stop propagation while just clicking on the mobile menu itself
-  document.getElementById('ims-sidebar-mobile').addEventListener('click', (event) => {
-    event.stopPropagation();  // to not trigger the body click listener
-  })
+  // document.getElementById('ims-sidebar-mobile').addEventListener('click', (event) => {
+  //   event.stopPropagation();  // to not trigger the body click listener
+  // })
+
 
   // hide on device rotation in case the width is bigger than the first breaking point
   document.defaultView.addEventListener('resize', () => {
