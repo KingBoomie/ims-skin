@@ -18,6 +18,10 @@ html, body {
   }
 }
 
+img {
+  max-width: 100%;
+}
+
 // Page ayout
 
 body {
@@ -588,6 +592,45 @@ hr {
   .external:after {
     content: " " url('../resources/extlink.svg');
   }  
+}
+
+// big images when using 'frame' outsize the width of the main wrapper
+.mw-parser-output div {
+  max-width: 100%;
+}
+
+.tright {
+  margin: 1rem 0 1rem 1rem;
+}
+
+.floatleft {
+  margin: .35rem 1rem 1rem 0;
+}
+
+.thumbcaption {
+  font-size: 1rem;
+  line-height: (1rem * @base-ratio);
+}
+
+.thumbinner {
+  border: 1px solid @box-fg;
+  padding: .5rem;
+}
+
+// Extensions
+
+// Upload Wizard
+
+// remove ul list images
+#upload-wizard {
+  ul {
+    list-style-type: none;
+    line-height: 2.075rem;
+  }
+
+  input[type='radio'] {
+    margin-right: .5rem;
+  }
 }
 
 // ---
