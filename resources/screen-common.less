@@ -315,25 +315,25 @@ body {
 
   h2 {
     font-size: 2.25rem;
-    line-height: 2.25rem;
+    line-height: 2.45rem;
     margin: (1rem * @base-ratio * 1.75) 0 1rem 0;
   }
 
   h3 {
     font-size: 1.75rem;
-    line-height: 1.75rem;
+    line-height: 1.95rem;
     margin: (1rem * @base-ratio * 1.35) 0 1rem 0;
   }
 
   h4 {
     font-size: 1.4rem;
-    line-height: 1.4rem;
+    line-height: 1.65rem;
     margin: (1rem * @base-ratio * 1.15) 0 1rem 0;
   }
 
   h5 {
     font-size: 1rem;
-    line-height: 1rem;
+    line-height: 1.45rem;
     margin: (1rem * @base-ratio) 0 1rem 0;
     text-transform: uppercase;
     letter-spacing: .618ex;
@@ -346,7 +346,7 @@ body {
 
   h6 {
     font-size: 1rem;
-    line-height: 1rem;
+    line-height: 1.25rem;
     margin: (1rem * @base-ratio) 0 1rem 0;
   }  
 }
@@ -391,8 +391,8 @@ a {
 .catlinks {
   padding: .618rem 1rem;
   margin: (1rem * @base-ratio) 0;
-  background: hsla(245, 62%, 88%, 10%);
-  border: 1px solid hsla(245, 62%, 88%, 60%);
+  background: @box-bg;
+  border: 1px solid @box-fg;
   max-width: max-content;
 
   a {
@@ -495,8 +495,8 @@ hr {
 .toc {
   padding: .618rem 1rem;
   //margin: (1rem * @base-ratio) 0;
-  background: hsla(245, 62%, 88%, 10%);
-  border: 1px solid hsla(245, 62%, 88%, 60%);
+  background: @box-bg;
+  border: 1px solid @box-fg;
   max-width: max-content;
 
   .toctogglespan {
@@ -542,8 +542,6 @@ hr {
 
 .research-group-card {
   display: flex;
-  width: 14rem;
-  height: 14rem;
   margin: 0 1rem 1rem 0;
   overflow: hidden;
   background: @green;
@@ -553,6 +551,8 @@ hr {
   font-size: 1.45rem;
   line-height: 1.65rem;
   font-weight: bold;
+  width: 14rem;
+  height: 14rem;
 
   @media (max-width: (@bp-one - 1)) {
     width: 100%;
@@ -576,6 +576,18 @@ hr {
       color: white;
     }
   }
+}
+
+// for the smaller font size
+.external:after {
+  content: " " url('../resources/extlink_small.svg');
+}
+
+// for the bigger font size
+.mw-parser-output {
+  .external:after {
+    content: " " url('../resources/extlink.svg');
+  }  
 }
 
 // ---
