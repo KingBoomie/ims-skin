@@ -18,6 +18,7 @@
 @violet: hsl(245, 70%, 61%);
 @box-bg: hsla(205, 62%, 88%, 10%);
 @box-fg: hsla(205, 62%, 88%, 60%);
+@red: hsl(10,80%,40%);
 
 // typography
 @font-face {
@@ -60,4 +61,9 @@
   -moz-box-shadow: none;
   border-radius: 0;
   box-shadow: none;  
+}
+
+.small {
+  font-size: .8rem;
+  line-height: (1rem * @base-ratio) * .8;
 }

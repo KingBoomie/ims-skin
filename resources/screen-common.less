@@ -174,8 +174,7 @@ body {
   flex-wrap: wrap;
   justify-content: space-between;
   min-height: 70px;
-  font-size: .8rem;
-  line-height: (1rem * @base-ratio) * .8;
+  .small();
 
   ul {
     display: flex;
@@ -208,7 +207,7 @@ body {
 }
 
 a.new {
-  color: hsl(10,80%,40%);
+  color: @red;
 }
 
 #site-footer {
@@ -254,10 +253,61 @@ a.new {
   }
 }
 
-#userloginForm {
+.mw-ui-container #userloginForm {
+  // reset
+  float: none;
+  margin-right: 0;
+  
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  font-size: 1rem;
+  line-height: 1rem * @base-ratio;
+
+  label {
+    font-weight: bold;
+  }
+}
+
+.mw-ui-vform {
+  width: unset;
+  flex: 1 0 auto;
+  max-width: 30rem;
+  border: 1px solid @box-fg;
+  background: @box-bg;
+  padding: 1rem;
+}
+
+.mw-createacct-benefits-list {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.warning > .mw-parser-output {
+  .small();
+
+  p {
+    margin: 0;
+  }
+}
+
+ul.gallery {
+  margin: 0 !important;
+  padding: 0;
+}
+
+li.gallerybox div.thumb, div.thumb {
+  margin: 0;
+}
+
+div.gallerytext {
+  .small();
+  padding: 0;
+  margin: .3rem 0;
+}
+
+dt {
+  font-weight: bold;
 }
 
 // Typography
@@ -307,8 +357,7 @@ body {
 
 .mw-body-content {
   #contentSub {
-    font-size: .8rem;
-    line-height: (1rem * @base-ratio) * .8;
+    .small();
   }
 
   h1 {
@@ -436,8 +485,7 @@ a {
 // Elements
 
 small {
-  font-size: .8rem;
-  line-height: (1rem * @base-ratio) * .8;
+  .small();
 }
 
 .mw-body {
@@ -451,6 +499,17 @@ small {
     li {
       margin-bottom: .16rem;
     }
+  }
+
+  ol {
+    margin-left: 1.5rem;
+  }
+}
+
+.mw-specialpagerestricted {
+  font-weight: normal;
+  a {
+    border-bottom: 1px solid @red;
   }
 }
 
@@ -534,8 +593,7 @@ hr {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  font-size: .8rem;
-  line-height: (1rem * @base-ratio) * .8;
+  .small();
 }
 
 .research-group-wrapper {
@@ -617,7 +675,53 @@ hr {
   padding: .5rem;
 }
 
+fieldset {
+  margin: 1rem 0;
+}
+
+legend {
+  font-size: 1rem;
+  line-height: 1.45rem;
+  font-weight: bold;
+}
+
+.oo-ui-fieldLayout-messages {
+  padding: 0;
+  margin: .5rem 0 !important;
+}
+
+//
 // Extensions
+//
+
+// Search
+
+// some bug on hover
+.oo-ui-actionFieldLayout .oo-ui-actionFieldLayout-input .oo-ui-widget.oo-ui-textInputWidget > .oo-ui-inputWidget-input {
+  position: initial;
+}
+
+ul.mw-search-results {
+  margin: 0;
+}
+
+.mw-search-profile-tabs {
+  ul {
+    list-style-type: none;
+  }
+
+  .current a {
+    color: black;
+  }
+}
+
+.searchresult, .mw-search-result-data {
+  .small();
+}
+
+.mw-search-pager-bottom {
+  font-weight: bold;
+}
 
 // Upload Wizard
 
