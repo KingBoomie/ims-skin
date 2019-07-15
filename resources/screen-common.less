@@ -9,7 +9,7 @@ html, body, h1, h2, h3, h4, h5, h6, p, ul, ol, li {
 
 html, body {
   height: 100%;
-  overflow-x: hidden;
+  //overflow-x: hidden;
 }
 
 #p-personal, #p-personal-mobile, #ims-sidebar, #ims-sidebar-mobile, #site-footer {
@@ -270,7 +270,7 @@ a.new {
 }
 
 .mw-ui-vform {
-  width: unset;
+  //width: unset;
   flex: 1 0 auto;
   max-width: 30rem;
   border: 1px solid @box-fg;
@@ -280,6 +280,7 @@ a.new {
 
 .mw-createacct-benefits-list {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
 }
 
@@ -317,17 +318,6 @@ p {
 }
 
 body {
-  // &.action-edit, &.action-submit {
-  //   .firstHeading {
-  //     font-size: 3rem;
-  //     line-height: 3rem;
-  //     font-family: @text-typefaces;
-  //     text-transform: none;
-  //     font-weight: bold;
-  //     margin: 0 0 1rem 0 !important;
-  //   }
-  // }
-
   .firstHeading {
     font-family: 'Aino-Headline';
     text-transform: lowercase;
@@ -349,10 +339,6 @@ body {
 
 .mw-editsection {
   font-family: @text-typefaces;
-}
-
-#mw-content-text {
-  //margin-top: 1.65rem;
 }
 
 .mw-body-content {
@@ -589,10 +575,11 @@ hr {
   }
 }
 
-#editform {
+form#editform {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  margin: 1rem 0;
   .small();
 }
 
@@ -653,9 +640,9 @@ hr {
 }
 
 // big images when using 'frame' outsize the width of the main wrapper
-.mw-parser-output div {
-  max-width: 100%;
-}
+// .mw-parser-output div {
+//   max-width: 100%;
+// }
 
 .tright {
   margin: 1rem 0 1rem 1rem;
@@ -686,8 +673,93 @@ legend {
 }
 
 .oo-ui-fieldLayout-messages {
-  padding: 0;
+  padding: 0 !important;
   margin: .5rem 0 !important;
+}
+
+.oo-ui-fieldLayout-messages-error {
+  color: @red;
+}
+
+#mwe-upwiz-details-error-count, #mwe-upwiz-details-warning-count {
+  margin: .5rem 0;
+}
+
+.mw_metadata {
+  margin: .3rem 0;
+}
+
+div.mw-warning-with-logexcerpt {
+  margin: 1rem 0;
+  padding: 1rem;
+
+  p:first-of-type {
+    margin-top: 0;
+  }
+}
+
+// Templates
+
+.user-profile {
+  max-width: 42.5rem;
+}
+
+.user-profile-picture {
+  img {
+    border-radius: 1rem;
+    // width: 100%;
+    height: auto;
+  }
+}
+.user-profile-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;  
+}
+.user-profile-list-item {
+  margin: .4rem 0;
+}
+.user-profile-list-item-expandable {
+  background: @box-bg;
+  padding: .6rem;
+  border: 1px solid @box-fg;
+  margin-bottom: .1rem;
+  transition: @base-transition;
+  //max-width: 25rem;
+  color: @text-color;
+  
+  .user-profile-list-expandable-title {
+    cursor: pointer;
+    transition: @base-transition;
+    &:before {
+      content: "▸ ";
+    }
+
+    &.active {
+      &:before {
+	content: "▾ ";
+      }
+    }
+    
+    &:hover, &:focus {
+      color: @accent-color-one-dark;
+    }
+  }
+
+  .user-profile-list-expandable-content {
+    display: none;
+    margin-top: 1rem;
+
+    &.active {
+      display: block;
+    }
+  }
+}
+.user-profile-list-title, .user-profile-list-expandable-title {
+  font-weight: bold;
+}
+.user-profile-list-content, user-profile-list-expandable-content {
+  margin-left: 1rem;
 }
 
 //
@@ -699,6 +771,16 @@ legend {
 // some bug on hover
 .oo-ui-actionFieldLayout .oo-ui-actionFieldLayout-input .oo-ui-widget.oo-ui-textInputWidget > .oo-ui-inputWidget-input {
   position: initial;
+}
+
+.search-types {
+  ul {
+    margin: 0 !important;
+  }
+
+  li {
+    margin: 0 !important;
+  }
 }
 
 ul.mw-search-results {

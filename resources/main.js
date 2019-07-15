@@ -1,6 +1,7 @@
 // R U N
 
 initMobileMenu();
+initUserProfile();
 
 
 // L I B R A R Y
@@ -57,5 +58,18 @@ function showMobileMenu() {
   document.getElementById('ims-sidebar-mobile').classList.add('active');
   for (var el of document.getElementsByClassName('main-wrapper')) {
     el.classList.add('fixed');
+  }
+}
+
+// UserProfile
+
+function initUserProfile() {
+  var content_boxes = document.querySelectorAll('.user-profile-list-item-expandable > .user-profile-list-expandable-title');
+  for (var box of content_boxes) {
+    console.log('box:',box);
+    box.addEventListener('click', (event) => {
+      event.target.classList.toggle('active');
+      event.target.nextSibling.classList.toggle('active');
+    })
   }
 }
