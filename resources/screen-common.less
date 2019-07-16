@@ -208,6 +208,10 @@ body {
 
 a.new {
   color: @red;
+
+  &:hover, &:focus {
+    color: @text-color;
+  }
 }
 
 #site-footer {
@@ -413,6 +417,14 @@ a {
     &:hover, &:focus {
       color: black;
     }
+
+    &.new {
+      color: @red;
+
+      &:hover, &:focus {
+	color: @text-color;
+      }
+    }      
   }
 }
 
@@ -621,7 +633,7 @@ form#editform {
     padding: 1rem;
     width: 100%;
 
-    &:link, &:visited {
+    &:link, &:visited, &:hover, &:focus, &:hover.new, &:focus.new {
       color: white;
     }
   }
@@ -700,6 +712,31 @@ div.mw-warning-with-logexcerpt {
 
 // Templates
 
+.user-profile-alt {
+  @media (min-width: @bp-one) {
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: row-reverse;
+
+    .user-profile-picture {
+      width: 50%;
+      a {
+	padding-left: 1rem;
+      }
+
+      img {
+	position: sticky;
+	top: 1rem;
+      }
+    }
+
+    .user-profile-list {
+      width: 50%;
+    }
+  }
+
+}
+
 .user-profile {
   max-width: 42.5rem;
 }
@@ -723,7 +760,7 @@ div.mw-warning-with-logexcerpt {
   background: @box-bg;
   padding: .6rem;
   border: 1px solid @box-fg;
-  margin-bottom: .1rem;
+  margin: .3rem 0;
   transition: @base-transition;
   //max-width: 25rem;
   color: @text-color;
