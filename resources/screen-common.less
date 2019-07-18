@@ -603,33 +603,61 @@ form#editform {
 
 .research-group-card {
   display: flex;
+  flex-wrap: wrap;
   margin: 0 1rem 1rem 0;
   overflow: hidden;
-  background: @green;
   color: white;
-  flex-wrap: wrap;
   transition: @base-transition;
-  font-size: 1.45rem;
+  font-size: 1.5rem;
   line-height: 1.65rem;
   font-weight: bold;
   width: 14rem;
   height: 14rem;
 
-  @media (max-width: (@bp-one - 1)) {
-    width: 100%;
-    margin: 0 0 1rem 0;
-  }
-  
-
+  // using plain colors for cards without images
+  background: @green;
   &:nth-child(even) {
     background: @violet;
   }
+
+  &#Bioengineering {
+    background: top right / cover no-repeat black url('imgs/bio@2x.jpg');
+    &:hover, &:focus {
+      opacity: .85;
+    }
+  }
+  &#MixedSignalMicroelectronics {
+    background: top left / cover no-repeat black url('imgs/msm@2x.jpg');
+    &:hover, &:focus {
+      opacity: .85;
+    }
+  }
+  &#Robotics {
+    background: top right / cover no-repeat black url('imgs/rob@2x.jpg');
+    &:hover, &:focus {
+      opacity: .85;
+    }
+  }
+  &#SoftRobotics {
+    background: top right / cover no-repeat black url('imgs/srob@2x.jpg');
+    &:hover, &:focus {
+      opacity: .85;
+    }
+  }
+
+  @media (max-width: (@bp-one - 1)) {
+    width: 100%;
+    height: 10rem;
+    margin: 0 0 1rem 0;
+  }  
 
   &:hover, &:focus {
     background: @sidebar-bg;
   }
 
   a {
+    display: flex;
+    align-items: end;
     padding: 1rem;
     width: 100%;
 
@@ -655,6 +683,11 @@ form#editform {
 // .mw-parser-output div {
 //   max-width: 100%;
 // }
+
+.thumb.tright {
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+}
 
 .tright {
   margin: 1rem 0 1rem 1rem;
