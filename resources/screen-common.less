@@ -657,7 +657,8 @@ form#editform {
   }
 
   &:hover, &:focus {
-    background: @sidebar-bg;
+    //background: @sidebar-bg;
+    opacity: .85;
   }
 
   a {
@@ -689,10 +690,18 @@ form#editform {
 //   max-width: 100%;
 // }
 
-.thumb.tright {
-  //margin-left: 1rem;
-  margin-bottom: 1rem;
+.thumb, thumbinner {
+  display: block;
 }
+
+.thumb.tright {
+  margin-left: .5rem;
+}
+
+.thumb.tleft {
+  margin-right: .5rem;
+}
+
 
 .tright {
   margin: 1rem 0 1rem 1rem;
@@ -710,6 +719,7 @@ form#editform {
 .thumbinner {
   border: 1px solid @box-fg;
   padding: .5rem;
+  margin-bottom: 1rem;
 }
 
 fieldset {
@@ -853,6 +863,17 @@ div.mw-warning-with-logexcerpt {
   // default margin is too much for that place
   pre {
     margin: 0;
+  }
+}
+
+.oo-ui-widget {
+  ul {
+    margin-left: 1rem;
+    min-width: 10rem;
+
+    li {
+      margin-bottom: .16rem;
+    }
   }
 }
 
