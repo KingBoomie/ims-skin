@@ -97,6 +97,7 @@ body {
 
   a {
     color: @sidebar-fg;
+    //color: @text-color;
     text-decoration: none;
  
     &:hover, &:focus {
@@ -682,6 +683,20 @@ form#editform {
 .mw-parser-output {
   .external:after {
     content: " " url('extlink.svg');
+  }  
+}
+
+// body secure links
+.mw-parser-output{
+  a.secure:before {
+    content: url('lock.svg') " ";
+  }  
+}
+
+// sidebar secure links
+#ims-sidebar, #ims-sidebar-mobile {
+  a.secure:before {
+    content: url('lock-white.svg') " ";
   }  
 }
 

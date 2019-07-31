@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="10px" viewBox="0 0 10 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>lock-white</title>
+    <desc>Created with Sketch.</desc>
+    <g id="lock-white" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M8.03571429,4.375 L7.55357143,4.375 L7.55357143,2.96875 C7.55357143,1.33203125 6.18348214,0 4.5,0 C2.81651786,0 1.44642857,1.33203125 1.44642857,2.96875 L1.44642857,4.375 L0.964285714,4.375 C0.431919643,4.375 0,4.79492188 0,5.3125 L0,9.0625 C0,9.58007812 0.431919643,10 0.964285714,10 L8.03571429,10 C8.56808036,10 9,9.58007812 9,9.0625 L9,5.3125 C9,4.79492188 8.56808036,4.375 8.03571429,4.375 Z M6,4 L3,4 L3,2.5 C3,1.67291667 3.67291667,1 4.5,1 C5.32708333,1 6,1.67291667 6,2.5 L6,4 Z" id="Shape" fill="#FFFFFF" fill-rule="nonzero"></path>
+    </g>
+</svg>

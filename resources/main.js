@@ -2,7 +2,7 @@
 
 initMobileMenu();
 initUserProfile();
-
+initSecureLinks();
 
 // L I B R A R Y
 
@@ -61,15 +61,25 @@ function showMobileMenu() {
   }
 }
 
-// UserProfile
+// UserProfile, expandable items
 
 function initUserProfile() {
   var content_boxes = document.querySelectorAll('.user-profile-list-item-expandable > .user-profile-list-expandable-title');
   for (var box of content_boxes) {
-    console.log('box:',box);
     box.addEventListener('click', (event) => {
       event.target.classList.toggle('active');
       event.target.nextSibling.classList.toggle('active');
     })
+  }
+}
+
+// Placing an icon on "Secure:" pages
+
+function initSecureLinks() {
+  var links = document.querySelectorAll('a');
+  for (var link of links) {
+    if (link.href.indexOf('/Secure:') >= 0) {
+      link.classList.toggle('secure');
+    }
   }
 }
