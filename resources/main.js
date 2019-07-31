@@ -3,6 +3,7 @@
 initMobileMenu();
 initUserProfile();
 initSecureLinks();
+initColorScheme();
 
 // L I B R A R Y
 
@@ -80,6 +81,41 @@ function initSecureLinks() {
   for (var link of links) {
     if (link.href.indexOf('/Secure:') >= 0) {
       link.classList.toggle('secure');
+    }
+  }
+}
+
+// Changing color of the sidebar depending on the time
+
+function initColorScheme() {
+  $.ajax({
+    url: "https://api.sunrise-sunset.org/json?lat=58.366052&lng=26.694626&formatted=0",
+    dataType:'jsonp',
+    type: 'get',
+    success: function(response){
+      setColorScheme(Date.now() > Date.parse(response['results']['sunset']));
+    },
+    error: function(XMLHttpRequest, textStatus, errorThrown) {
+      console.log(XMLHttpRequest, textStatus, errorThrown)
+    }
+  });
+}
+
+function setColorScheme(isNight) {
+  var sidebarMobile = document.getElementById('ims-sidebar-mobile');
+  var sidebar = document.getElementById('ims-sidebar');
+  var cards = document.querySelectorAll('.research-group-card');
+  if (isNight) {
+    sidebar.classList.add('night');    
+    sidebarMobile.classList.add('night');
+    for (var card of cards) {
+      card.classList.add('night');
+    }
+  } else {
+    sidebar.classList.remove('night');
+    sidebarMobile.classList.remove('night');
+    for (var card of cards) {
+      card.classList.remove('night');
     }
   }
 }

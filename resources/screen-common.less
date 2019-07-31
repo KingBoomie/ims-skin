@@ -89,19 +89,33 @@ body {
 
 // Sidebars shared styling
 #ims-sidebar, #ims-sidebar-mobile {
-  background: @sidebar-bg;
-  color: @sidebar-fg;
+  background: @sidebar-bg-day;
+  color: @text-color;
   padding: 0 (1rem * @base-ratio);
   font-weight: 300;
   letter-spacing: .1ex;
 
+  &.night {
+    background: @sidebar-bg-night;
+    color: white;
+
+    a {
+      color: white;
+      text-decoration: none;
+      
+      &:hover, &:focus {
+	color: @yellow;
+      }
+    }    
+  }
+
   a {
-    color: @sidebar-fg;
-    //color: @text-color;
+    //color: @sidebar-fg;
+    color: @text-color;
     text-decoration: none;
  
     &:hover, &:focus {
-      color: @accent-color-one;
+      color: @accent-color-one-dark;
     }
   }
 
@@ -219,24 +233,49 @@ a.new {
   align-items: end;
 }
 
-#ims-logo {
-  display: flex;
-  justify-content: center;
-  padding-top: 1rem;
+#ims-sidebar, #ims-sidebar-mobile {
+  #ims-logo {
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
 
-  .mw-wiki-logo {
-    background: top left / contain url('imgs/ims-logo-c@2x.png');
-  }
+    .mw-wiki-logo {
+      background: top left / contain url('imgs/ims-logo-b@2x.png');
+    }
 
-  // Make logo image visible
-  // The class sets the background image from $wgLogo, but we still need to give it a size in order to show up
-  a.mw-wiki-logo {
-    display: block;
-    content: '';
-    width: 10rem;
-    height: 7rem;
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
+    // Make logo image visible
+    // The class sets the background image from $wgLogo, but we still need to give it a size in order to show up
+    a.mw-wiki-logo {
+      display: block;
+      content: '';
+      width: 10rem;
+      height: 7rem;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+    }
+  }  
+
+  &.night {
+    #ims-logo {
+      display: flex;
+      justify-content: center;
+      padding-top: 1rem;
+
+      .mw-wiki-logo {
+	background: top left / contain url('imgs/ims-logo-c@2x.png');
+      }
+
+      // Make logo image visible
+      // The class sets the background image from $wgLogo, but we still need to give it a size in order to show up
+      a.mw-wiki-logo {
+	display: block;
+	content: '';
+	width: 10rem;
+	height: 7rem;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+      }
+    }   
   }
 }
 
@@ -611,7 +650,7 @@ form#editform {
   flex-wrap: wrap;
   margin: 0 1rem 1rem 0;
   overflow: hidden;
-  color: white;
+  color: @text-color;
   transition: @base-transition;
   font-size: 1.5rem;
   line-height: 1.65rem;
@@ -627,39 +666,9 @@ form#editform {
   }  
 
   // using plain colors for cards without images
-  background: @green;
-  &:nth-child(even) {
-    background: @violet;
-  }
-
-  &#Bioengineering {
-    background: top right / cover no-repeat black url('imgs/bio@2x.jpg');
-    &:hover, &:focus {
-      opacity: .85;
-    }
-  }
-  &#MixedSignalMicroelectronics {
-    background: top left / cover no-repeat black url('imgs/msm@2x.jpg');
-    &:hover, &:focus {
-      opacity: .85;
-    }
-  }
-  &#Robotics {
-    background: top right / cover no-repeat black url('imgs/rob@2x.jpg');
-    &:hover, &:focus {
-      opacity: .85;
-    }
-  }
-  &#SoftRobotics {
-    background: top right / cover no-repeat black url('imgs/srob@2x.jpg');
-    &:hover, &:focus {
-      opacity: .85;
-    }
-  }
-
-  &:hover, &:focus {
-    //background: @sidebar-bg;
-    opacity: .85;
+  background: @sidebar-bg-day;
+  &.night {
+    background: @sidebar-bg-night;
   }
 
   a {
@@ -669,9 +678,60 @@ form#editform {
     width: 100%;
 
     &:link, &:visited, &:hover, &:focus, &:hover.new, &:focus.new {
+      color: @text-color;
+    }
+  }
+
+  &.night {
+    a {
+      &:link, &:visited, &:hover, &:focus, &:hover.new, &:focus.new {
+	color: white;
+      }
+    }
+  }
+
+  &#Bioengineering {
+    background: top right / cover no-repeat black url('imgs/bio@2x.jpg');
+    &:hover, &:focus {
+      opacity: .85;
+    }
+    a:link, a:visited, a:hover, a:focus, a:hover.new, a:focus.new {
       color: white;
     }
   }
+  &#MixedSignalMicroelectronics {
+    background: top left / cover no-repeat black url('imgs/msm@2x.jpg');
+    &:hover, &:focus {
+      opacity: .85;
+    }
+    a:link, a:visited, a:hover, a:focus, a:hover.new, a:focus.new {
+      color: white;
+    }
+  }
+  &#Robotics {
+    background: top right / cover no-repeat black url('imgs/rob@2x.jpg');
+    &:hover, &:focus {
+      opacity: .85;
+    }
+    a:link, a:visited, a:hover, a:focus, a:hover.new, a:focus.new {
+      color: white;
+    }
+  }
+  &#SoftRobotics {
+    background: top right / cover no-repeat black url('imgs/srob@2x.jpg');
+    &:hover, &:focus {
+      opacity: .85;
+    }
+    a:link, a:visited, a:hover, a:focus, a:hover.new, a:focus.new {
+      color: white;
+    }
+  }
+
+  &:hover, &:focus {
+    //background: @sidebar-bg;
+    opacity: .85;
+  }
+
 }
 
 // for the smaller font size
@@ -702,9 +762,16 @@ form#editform {
 // sidebar secure links
 #ims-sidebar, #ims-sidebar-mobile {
   a.secure:before {
+    content: url('lock.svg') " ";
+  }  
+}
+
+#ims-sidebar.night, #ims-sidebar-mobile.night {
+  a.secure:before {
     content: url('lock-white.svg') " ";
   }  
 }
+
 
 // big images when using 'frame' outsize the width of the main wrapper
 // .mw-parser-output div {
