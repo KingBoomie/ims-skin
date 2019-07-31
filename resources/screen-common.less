@@ -677,8 +677,12 @@ form#editform {
     padding: 1rem;
     width: 100%;
 
-    &:link, &:visited, &:hover, &:focus, &:hover.new, &:focus.new {
+    &:link, &:visited {
       color: @text-color;
+    }
+
+    &:hover, &:focus, &:hover.new, &:focus.new {
+      color: lighten(@text-color, 30%);
     }
   }
 
