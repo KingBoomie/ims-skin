@@ -687,10 +687,16 @@ form#editform {
 }
 
 // body secure links
-.mw-parser-output{
+.mw-parser-output {
   a.secure:after {
     content: " " url('lock.svg');
-  }  
+  }
+
+  #toc {
+    a.secure:after {
+      content: "";
+    }
+  }
 }
 
 // sidebar secure links
