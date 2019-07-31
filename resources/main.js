@@ -93,7 +93,8 @@ function initColorScheme() {
     dataType:'jsonp',
     type: 'get',
     success: function(response){
-      setColorScheme(Date.now() > (10800000 + Date.parse(response['results']['sunset']))); // it's UTC time, so we're adding 3 hours to it
+      console.log(response['results']['sunset']);
+      setColorScheme(Date.now() > Date.parse(response['results']['sunset']));
     },
     error: function(XMLHttpRequest, textStatus, errorThrown) {
       console.log(XMLHttpRequest, textStatus, errorThrown)
