@@ -499,6 +499,18 @@ class IMSTemplate extends BaseTemplate {
 					$this->get( $aLink )
 				);
 			}
+
+            // Adding one more page to the footer.
+            $html .= Html::rawElement(
+                'li',
+                [],
+                Html::rawElement(
+                    'a',
+                    ['href' => 'Credits'],
+                    'Credits'
+                )
+            );
+        
 			$html .= Html::closeElement( 'ul' );
 		}
 

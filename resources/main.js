@@ -93,7 +93,6 @@ function initColorScheme() {
     dataType:'jsonp',
     type: 'get',
     success: function(response){
-      console.log(response['results']['sunset']);
       setColorScheme(Date.now() > Date.parse(response['results']['sunset']));
     },
     error: function(XMLHttpRequest, textStatus, errorThrown) {
