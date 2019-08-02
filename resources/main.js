@@ -93,20 +93,28 @@ function initColorScheme() {
     dataType:'jsonp',
     type: 'get',
     success: function(response){
-      // now
-      var now = new Date();
-      var nowHours = now.getHours();
-      var nowMins = now.getMinutes();
-      // sunrise
-      var sunriseArr = parseTime(response['results']['sunrise']);
-      var sunriseHours = sunriseArr[0];
-      var sunriseMins = sunriseArr[1];
-      // sunset
-      var sunsetArr = parseTime(response['results']['sunset']);
-      var sunsetHours = sunsetArr[0];
-      var sunsetMins = sunsetArr[1];
+      var now, sunrise, sunset;
+      
+      { // now
+	var now = new Date();
+	// converting to minutes
+	now = now.getHours() * 60 + now.getMinutes();
+      }
+      
+      { // sunrise
+	var arr = parseTime(response['results']['sunrise']);
+	// converting to minutes
+	sunrise = arr[0] * 60 + arr[1];
+      }
+      
+      { // sunset
+	var arr = parseTime(response['results']['sunset']);
+	// converting to minutes
+	sunset = arr[0] * 60 + arr[1];
+      }
+
       // comparison
-      setColorScheme(!(nowHours > sunriseHours && nowHours < sunsetHours && nowMins > sunriseMins && nowMins < sunsetMins))
+      setColorScheme(!(now > sunrise && now < sunset))
     },
     error: function(XMLHttpRequest, textStatus, errorThrown) {
       console.log(XMLHttpRequest, textStatus, errorThrown)
