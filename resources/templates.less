@@ -1,0 +1,125 @@
+// Templates
+//
+// Styles for the Template: namespace and its custom templates
+// essential for the unified look of the wiki.
+@import "variables.less";
+
+.team-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.team-member {
+  width: 100%;
+  @media (min-width: @bp-one) {
+    width: 15rem;
+  }
+}
+.team-member-name {
+  display: block;
+  font-weight: 700;
+  border-bottom: 2px solid @accent-color-one-dark;
+  margin-top: 1rem;
+  margin-right: 1rem;
+}
+.team-member-title {
+  display: block;
+
+  margin-right: 1rem;
+}
+
+.user-profile {
+  @media (min-width: @bp-one) {
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: row-reverse;
+
+    .user-profile-picture {
+      width: 50%;
+      a {
+	padding-left: 1rem;
+      }
+
+      img {
+	position: -webkit-sticky;
+	position: sticky;
+	top: 1rem;
+      }
+    }
+
+    .user-profile-list {
+      width: 50%;
+    }
+  }
+
+}
+.user-profile-picture {
+  img {
+    border-radius: 1rem;
+    height: auto;
+  }
+}
+
+.user-profile-list-item {
+  margin: .4rem 0;
+}
+
+.user-profile-list-item-expandable {
+  background: @box-bg;
+  padding: .6rem;
+  border: 1px solid @box-fg;
+  margin: .3rem 0;
+  transition: @base-transition;
+
+  color: @text-color;
+  
+  .user-profile-list-expandable-title {
+    cursor: pointer;
+    transition: @base-transition;
+    &:before {
+      content: "▸ ";
+    }
+
+    &.active {
+      &:before {
+	content: "▾ ";
+      }
+    }
+    
+    &:hover, &:focus {
+      color: @accent-color-one-dark;
+    }
+  }
+
+  .user-profile-list-expandable-content {
+    display: none;
+    margin-top: 1rem;
+
+    &.active {
+      display: block;
+    }
+  }
+}
+
+.user-profile-list-title, .user-profile-list-expandable-title {
+  font-weight: 700;
+}
+
+.user-profile-list-content, user-profile-list-expandable-content {
+  margin-left: 1rem;
+
+  // default margin is too much for that place
+  pre {
+    margin: 0;
+  }
+}
+
+.oo-ui-widget {
+  ul {
+    margin-left: 1rem;
+    min-width: 10rem;
+
+    li {
+      margin-bottom: .16rem;
+    }
+  }
+}

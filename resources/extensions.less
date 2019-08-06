@@ -1,0 +1,64 @@
+// Extensions
+//
+// Styles for extensions installed at the <root_wiki>/extensions.
+
+@import "variables.less";
+
+// Cite
+
+.mw-references-wrap {
+  margin: 1rem 0;
+}
+
+// Search
+
+// some bug on hover
+.oo-ui-actionFieldLayout .oo-ui-actionFieldLayout-input .oo-ui-widget.oo-ui-textInputWidget > .oo-ui-inputWidget-input {
+  position: initial;
+}
+
+.search-types {
+  ul {
+    margin: 0 !important;
+  }
+
+  li {
+    margin: 0 !important;
+  }
+}
+
+ul.mw-search-results {
+  margin: 0;
+}
+
+.mw-search-profile-tabs {
+  ul {
+    list-style-type: none;
+  }
+
+  .current a {
+    color: @text-color;
+  }
+}
+
+.searchresult, .mw-search-result-data {
+  .small();
+}
+
+.mw-search-pager-bottom {
+  font-weight: 700;
+}
+
+// Upload Wizard
+
+// remove ul list images
+#upload-wizard {
+  ul {
+    list-style-type: none;
+    line-height: 2.075rem;
+  }
+
+  input[type='radio'] {
+    margin-right: .5rem;
+  }
+}

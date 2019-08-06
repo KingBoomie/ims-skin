@@ -1,4 +1,7 @@
 @import "variables.less";
+@import "fonts.less";
+@import "templates.less";
+@import "extensions.less";
 
 // Reset
 
@@ -9,7 +12,6 @@ html, body, h1, h2, h3, h4, h5, h6, p, ul, ol, li {
 
 html, body {
   height: 100%;
-  //overflow-x: hidden;
 }
 
 #p-personal, #p-personal-mobile, #ims-sidebar, #ims-sidebar-mobile, #site-footer {
@@ -22,12 +24,10 @@ img {
   max-width: 100%;
 }
 
-// Page ayout
+// Page layout
 
 body {
   font-family: @text-typefaces;
-  //font-size: @secondary-text-size;
-  //line-height: @secondary-text-size * @text-ratio;
   font-size: 1rem;
   line-height: 1rem * @base-ratio;
   position: relative;
@@ -44,7 +44,6 @@ body {
   flex: 1 0 auto;
   min-width: 244px;
   min-height: 100vh;
-  //min-height: 100% !important;
 
   @media (min-width: @bp-one) {
     display: grid;
@@ -110,7 +109,6 @@ body {
   }
 
   a {
-    //color: @sidebar-fg;
     color: @text-color;
     text-decoration: none;
  
@@ -133,7 +131,7 @@ body {
 #ims-sidebar-mobile {
   display: none;
   z-index: 999;
-  box-shadow: @sidebar-shadow;
+  box-shadow: @shadow;
   width: 60%;
   max-width: 20em;
   height: 100%;
@@ -158,11 +156,11 @@ body {
 #ims-sidebar-trigger-icon {
   height: 25px;
   width: 35px;
-  -webkit-mask-image: url('menu.svg');
+  -webkit-mask-image: url('imgs/menu.svg');
   -webkit-mask-size: cover;
-  mask: url('menu.svg');
+  mask: url('imgs/menu.svg');
   mask-size: cover;
-  background: black;
+  background: @text-color;
   transition: @base-transition;
 
   &:hover, &:active {
@@ -204,7 +202,7 @@ body {
     transition: @base-transition;
 
     &:link, &:visited {
-      color: black;
+      color: @text-color;
 
       @media (max-width: (@bp-one - 1)) {
 	text-decoration: underline;
@@ -212,7 +210,7 @@ body {
     }
 
     &.new {
-      color: hsl(10,80%,40%);
+      color: @red;
     }
     
     &:hover, &:focus {
@@ -318,7 +316,6 @@ a.new {
 }
 
 .mw-ui-vform {
-  //width: unset;
   flex: 1 0 auto;
   max-width: 30rem;
   border: 1px solid @box-fg;
@@ -367,7 +364,7 @@ p {
 
 body {
   .firstHeading {
-    font-family: 'Aino-Headline';
+    font-family: 'Aino-Headline', @text-typefaces;
     text-transform: lowercase;
     font-weight: 100;
     margin: 0 0 1rem 0 !important;
@@ -459,7 +456,7 @@ a {
     }
 
     &:hover, &:focus {
-      color: black;
+      color: @text-color;
     }
 
     &.new {
@@ -492,10 +489,6 @@ a {
 
   a {
     text-decoration: none;
-
-    // &:hover, &:focus {
-    //   text-decoration: underline;
-    // }
   }  
 }
 
@@ -520,7 +513,7 @@ a {
 
   &:hover, &:focus {
     text-decoration: none;
-    color: black;
+    color: @text-color;
   }
 }
 
@@ -557,14 +550,14 @@ small {
 
 #searchInput {
   .reset-form-field();
-  border-bottom: 2px solid @sidebar-bg;
+  border-bottom: 2px solid @black;
   padding: .3rem 0;
   width: 18vw;
   min-width: 12rem;
 }
 
 ::placeholder {
-  color: black;
+  color: @text-color;
   opacity: 1;
 }
 
@@ -599,7 +592,6 @@ hr {
 
 .toc {
   padding: .618rem 1rem;
-  //margin: (1rem * @base-ratio) 0;
   background: @box-bg;
   border: 1px solid @box-fg;
   max-width: max-content;
@@ -648,8 +640,6 @@ form#editform {
 .research-group-card {
   display: flex;
   flex-wrap: wrap;
-  //align-items: flex-end;
-  //cursor: pointer;
   margin: 0 1rem 1rem 0;
   overflow: hidden;
   color: @text-color;
@@ -697,7 +687,7 @@ form#editform {
   }
 
   &#Bioengineering {
-    background: top right / cover no-repeat black url('imgs/bio@2x.jpg');
+    background: top right / cover no-repeat @text-color url('imgs/bio@2x.jpg');
     &:hover, &:focus {
       opacity: .85;
     }
@@ -706,7 +696,7 @@ form#editform {
     }
   }
   &#MixedSignalMicroelectronics {
-    background: top left / cover no-repeat black url('imgs/msm@2x.jpg');
+    background: top left / cover no-repeat @text-color url('imgs/msm@2x.jpg');
     &:hover, &:focus {
       opacity: .85;
     }
@@ -715,7 +705,7 @@ form#editform {
     }
   }
   &#Robotics {
-    background: top right / cover no-repeat black url('imgs/rob@2x.jpg');
+    background: top right / cover no-repeat @text-color url('imgs/rob@2x.jpg');
     &:hover, &:focus {
       opacity: .85;
     }
@@ -724,7 +714,7 @@ form#editform {
     }
   }
   &#SoftRobotics {
-    background: top right / cover no-repeat black url('imgs/srob@2x.jpg');
+    background: top right / cover no-repeat @text-color url('imgs/srob@2x.jpg');
     &:hover, &:focus {
       opacity: .85;
     }
@@ -734,7 +724,6 @@ form#editform {
   }
 
   &:hover, &:focus {
-    //background: @sidebar-bg;
     opacity: .85;
   }
 
@@ -742,20 +731,20 @@ form#editform {
 
 // for the smaller font size
 .external:after {
-  content: " " url('extlink_small.svg');
+  content: " " url('imgs/extlink_small.svg');
 }
 
 // for the bigger font size
 .mw-parser-output {
   .external:after {
-    content: " " url('extlink.svg');
+    content: " " url('imgs/extlink.svg');
   }  
 }
 
 // body secure links
 .mw-parser-output {
   a.secure:after {
-    content: " " url('lock.svg');
+    content: " " url('imgs/lock.svg');
   }
 
   #toc {
@@ -768,21 +757,15 @@ form#editform {
 // sidebar secure links
 #ims-sidebar, #ims-sidebar-mobile {
   a.secure:before {
-    content: url('lock.svg') " ";
+    content: url('imgs/lock.svg') " ";
   }  
 }
 
 #ims-sidebar.night, #ims-sidebar-mobile.night {
   a.secure:before {
-    content: url('lock-white.svg') " ";
+    content: url('imgs/lock-white.svg') " ";
   }  
 }
-
-
-// big images when using 'frame' outsize the width of the main wrapper
-// .mw-parser-output div {
-//   max-width: 100%;
-// }
 
 .thumb, thumbinner {
   display: block;
@@ -795,7 +778,6 @@ form#editform {
 .thumb.tleft {
   margin-right: .5rem;
 }
-
 
 .tright {
   margin: 1rem 0 1rem 1rem;
@@ -852,190 +834,6 @@ div.mw-warning-with-logexcerpt {
   }
 }
 
-// Templates
-
-.team-list {
-  display: flex;
-  flex-wrap: wrap;
-}
-.team-member {
-  width: 100%;
-  @media (min-width: @bp-one) {
-    width: 15rem;
-  }
-}
-.team-member-name {
-  display: block;
-  font-weight: 700;
-  border-bottom: 2px solid @accent-color-one-dark;
-  margin-top: 1rem;
-  margin-right: 1rem;
-}
-.team-member-title {
-  display: block;
-
-  margin-right: 1rem;
-}
-
-.user-profile {
-  @media (min-width: @bp-one) {
-    display: flex;
-    flex-wrap: wrap;
-    flex-flow: row-reverse;
-
-    .user-profile-picture {
-      width: 50%;
-      a {
-	padding-left: 1rem;
-      }
-
-      img {
-	position: -webkit-sticky;
-	position: sticky;
-	top: 1rem;
-      }
-    }
-
-    .user-profile-list {
-      width: 50%;
-    }
-  }
-
-}
-.user-profile-picture {
-  img {
-    border-radius: 1rem;
-    height: auto;
-  }
-}
-// .user-profile-list {}
-.user-profile-list-item {
-  margin: .4rem 0;
-}
-.user-profile-list-item-expandable {
-  background: @box-bg;
-  padding: .6rem;
-  border: 1px solid @box-fg;
-  margin: .3rem 0;
-  transition: @base-transition;
-  //max-width: 25rem;
-  color: @text-color;
-  
-  .user-profile-list-expandable-title {
-    cursor: pointer;
-    transition: @base-transition;
-    &:before {
-      content: "▸ ";
-    }
-
-    &.active {
-      &:before {
-	content: "▾ ";
-      }
-    }
-    
-    &:hover, &:focus {
-      color: @accent-color-one-dark;
-    }
-  }
-
-  .user-profile-list-expandable-content {
-    display: none;
-    margin-top: 1rem;
-
-    &.active {
-      display: block;
-    }
-  }
-}
-.user-profile-list-title, .user-profile-list-expandable-title {
-  font-weight: 700;
-}
-.user-profile-list-content, user-profile-list-expandable-content {
-  margin-left: 1rem;
-
-  // default margin is too much for that place
-  pre {
-    margin: 0;
-  }
-}
-
-.oo-ui-widget {
-  ul {
-    margin-left: 1rem;
-    min-width: 10rem;
-
-    li {
-      margin-bottom: .16rem;
-    }
-  }
-}
-
-//
-// Extensions
-//
-
-// Cite
-
-.mw-references-wrap {
-  margin: 1rem 0;
-}
-
-// Search
-
-// some bug on hover
-.oo-ui-actionFieldLayout .oo-ui-actionFieldLayout-input .oo-ui-widget.oo-ui-textInputWidget > .oo-ui-inputWidget-input {
-  position: initial;
-}
-
-.search-types {
-  ul {
-    margin: 0 !important;
-  }
-
-  li {
-    margin: 0 !important;
-  }
-}
-
-ul.mw-search-results {
-  margin: 0;
-}
-
-.mw-search-profile-tabs {
-  ul {
-    list-style-type: none;
-  }
-
-  .current a {
-    color: black;
-  }
-}
-
-.searchresult, .mw-search-result-data {
-  .small();
-}
-
-.mw-search-pager-bottom {
-  font-weight: 700;
-}
-
-// Upload Wizard
-
-// remove ul list images
-#upload-wizard {
-  ul {
-    list-style-type: none;
-    line-height: 2.075rem;
-  }
-
-  input[type='radio'] {
-    margin-right: .5rem;
-  }
-}
-
-// ---
-
 .mw-indicators {
   float: right;
   margin: 1.5rem 0 0 1rem;
@@ -1051,7 +849,6 @@ pre {
   margin: auto;
   text-align: center;
 }
-
 
 .fixed {
   position: fixed;
