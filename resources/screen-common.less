@@ -40,7 +40,7 @@ body {
 
 #mw-wrapper {
   display: flex;
-  flex-direction: column;
+  //flex-direction: column;
   flex: 1 0 auto;
   min-width: 244px;
   min-height: 100vh;
@@ -48,14 +48,14 @@ body {
   @media (min-width: @bp-one) {
     display: grid;
     grid-template-columns: @sidebar-width 1fr;
-    grid-gap: 1rem * @base-ratio;    
+    //grid-gap: 1rem * @base-ratio;    
     grid-auto-rows: minmax(100px, auto);
   }
 }
 
 .main-wrapper {
   display: flex;
-  flex: 1 0 auto;
+  //flex: 1 0 auto;
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: space-between;
@@ -65,6 +65,7 @@ body {
     margin: 0 1rem;
   }
   @media (min-width: @bp-one) {
+    margin-left: 1rem * @base-ratio;
     margin-right: 1rem * @base-ratio;
   }
 }
@@ -371,8 +372,8 @@ body {
     word-wrap: anywhere;
 
     @media (min-width: @bp-one) {
-      font-size: 4.5rem;
-      line-height: 4.75rem;
+      font-size: 5.25rem;
+      line-height: 5.55rem;
     }
     
     @media (max-width: (@bp-one - 1)) {
