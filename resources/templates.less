@@ -27,7 +27,7 @@
   margin-right: 1rem;
 }
 
-.user-profile {
+.user-profile, .user-profile-no-reverse {
   @media (min-width: @bp-one) {
     display: flex;
     flex-wrap: wrap;
@@ -50,7 +50,9 @@
       width: 50%;
     }
   }
-
+}
+.user-profile-no-reverse {
+  flex-flow: initial;
 }
 .user-profile-picture {
   img {
