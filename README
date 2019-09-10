@@ -1,3 +1,10 @@
-Intelligent Materials and Systems skin
+[Intelligent Materials and Systems](https://ims.ut.ee/) MediaWiki skin
+
+To install:
+
+* put into `mediawiki/skins`
+* in *LocalSettings.php*:
+  * add `wfLoadSkin( 'IMS' );` to load it
+  * set it as the default skin with `$wgDefaultSkin = 'IMS';`
 
 Consult before copying.
