@@ -3,7 +3,7 @@
 initMobileMenu();
 initUserProfile();
 initSecureLinks();
-initColorScheme();
+//initColorScheme();
 
 // L I B R A R Y
 
