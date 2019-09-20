@@ -8,6 +8,7 @@
   display: flex;
   flex-wrap: wrap;
 }
+
 .team-member {
   width: 100%;
   @media (min-width: @bp-one) {
@@ -23,8 +24,31 @@
 }
 .team-member-title {
   display: block;
-
   margin-right: 1rem;
+}
+
+.alumnus {
+  width: 100%;
+  @media (min-width: @bp-one) {
+    width: 15rem * 2;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+.alumnus-header {
+  display: block;
+  border-bottom: 2px solid @accent-color-one-dark;
+  margin-top: 1rem;
+  margin-right: 1rem;
+}
+.alumnus-name {
+  font-weight: 700;
+}
+//.alumnus-title {}
+.alumnus-description {
+  display: block;
 }
 
 .user-profile, .user-profile-no-reverse {
