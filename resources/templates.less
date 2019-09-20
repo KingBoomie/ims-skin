@@ -4,10 +4,15 @@
 // essential for the unified look of the wiki.
 @import "variables.less";
 
+//------------------------------------------------------------------------------
+// Teams
+
 .team-list {
   display: flex;
   flex-wrap: wrap;
 }
+
+// Members
 
 .team-member {
   width: 100%;
@@ -27,10 +32,18 @@
   margin-right: 1rem;
 }
 
+// Alumni
+
 .alumnus {
   width: 100%;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: @box-bg;
+  border: 1px solid @box-fg;
+
   @media (min-width: @bp-one) {
-    width: 15rem * 2;
+    //width: 14rem * 2;
+    width: 100%;
   }
 
   p {
@@ -39,9 +52,7 @@
 }
 .alumnus-header {
   display: block;
-  border-bottom: 2px solid @accent-color-one-dark;
-  margin-top: 1rem;
-  margin-right: 1rem;
+  //border-bottom: 2px solid @accent-color-one-dark;
 }
 .alumnus-name {
   font-weight: 700;
@@ -49,7 +60,14 @@
 //.alumnus-title {}
 .alumnus-description {
   display: block;
+
+  &::before {
+    content: "✍︎ ";
+  }
 }
+
+//------------------------------------------------------------------------------
+// Users
 
 .user-profile, .user-profile-no-reverse {
   @media (min-width: @bp-one) {
@@ -148,4 +166,39 @@
       margin-bottom: .16rem;
     }
   }
+}
+
+
+//------------------------------------------------------------------------------
+// Banner
+
+.banner {
+  width: 100%;
+  @media (min-width: @bp-one) {
+    width: 29rem;
+  }
+
+  background: @accent-color-one-bright;
+  border-radius: 2rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  transition: all 0.25s ease-out,opacity 0.25s ease-out;
+}
+
+.banner:hover {
+  background: lighten(@accent-color-one-bright, 10%);
+}
+
+.banner > a {
+  flex: 1 0 auto;
+  padding: 1.2rem;
+  font-size: 1.5rem;
+  line-height: 1.65rem;
+  font-weight: 700;
+  text-decoration: none !important;
+}
+
+.banner > a:link, .banner > a:hover, .banner > a:visited {
+  color: white !important;
 }
