@@ -7,12 +7,11 @@
 //------------------------------------------------------------------------------
 // Teams
 
+// this is compatible with .alumni list also
 .team-list {
   display: flex;
   flex-wrap: wrap;
 }
-
-// Members
 
 .team-member {
   width: 100%;
@@ -34,13 +33,17 @@
 
 // Alumni
 
-.alumnus {
+.alumni {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.alumnus, .alumni > .team-member { // if .team-member is in alumni list, then we overwrite its style
   width: 100%;
   padding: 1rem;
   margin-bottom: 1rem;
   background: @box-bg;
   border: 1px solid @box-fg;
-
   @media (min-width: @bp-one) {
     //width: 14rem * 2;
     width: 100%;
@@ -49,6 +52,24 @@
   p {
     margin: 0;
   }
+
+  // team-member overridden styles by the parent alumni class
+  .team-member-name {
+    border: none;
+    display: inline;
+    margin: 0;
+    &::after {
+      content: ", ";
+      font-weight: normal;
+    }
+  }
+  .team-member-title {
+    display: inline;
+    margin: 0;
+    &::before {
+      content: " ";
+    }
+  }  
 }
 .alumnus-header {
   display: block;
