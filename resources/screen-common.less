@@ -60,6 +60,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   z-index: 1;
+  max-width: 1440px;
 
   @media (max-width: (@bp-one - 1)) {
     margin: 0 1rem;
@@ -653,8 +654,15 @@ form#editform {
   // mobile size
   @media (max-width: (@bp-one - 1)) {
     width: 100%;
-    height: 56vw;
+    //height: 56vw;
+    height: 14rem;
     margin: 0 0 1rem 0;
+  }  
+
+  // mobile size
+  @media (min-width: 1400px) {
+    width: 21.5rem;
+    height: 21rem;
   }  
 
   // using plain colors for cards without images
