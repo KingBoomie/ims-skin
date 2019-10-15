@@ -95,9 +95,12 @@
     display: flex;
     flex-wrap: wrap;
     flex-flow: row-reverse;
+    justify-content: flex-end;
 
     .user-profile-picture {
       width: 50%;
+      max-width: 500px;
+
       a {
 	padding-left: 1rem;
       }
@@ -118,9 +121,16 @@
   flex-flow: initial;
 }
 .user-profile-picture {
+  margin-bottom: 1rem;
+  
   img {
     border-radius: 1rem;
     height: auto;
+    max-height: 500px;
+    @media (min-width: 1400px) {
+      max-height: 700px;
+    }
+    width: auto;
   }
 }
 
