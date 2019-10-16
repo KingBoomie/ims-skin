@@ -65,12 +65,13 @@ class IMSTemplate extends BaseTemplate {
                         $this->getSearch()
     				) .
                     // Page Content
-                    Html::rawElement( 'main', [ 'class' => 'mw-body', 'role' => 'main' ],
+                        Html::rawElement( 'main', [ 'id' => 'content', 'class' => 'mw-body', 'role' => 'main' ],
         				$this->getSiteNotice() .
         				$this->getNewTalk() .
         				$this->getIndicators() .
         				Html::rawElement( 'h1',
         					[
+        						'id' => 'firstHeading',
         						'class' => 'firstHeading',
         						'lang' => $this->get( 'pageLanguage' )
         					],
@@ -491,11 +492,11 @@ class IMSTemplate extends BaseTemplate {
 		}
 		
 		if ( count( $validFooterLinks ) > 0 ) {
-			$html .= Html::openElement( 'ul', [ 'id' => 'f-list', 'class' => 'footer-places' ] );
+			$html .= Html::openElement( 'ul', [ 'id' => 'footer-info', 'class' => 'footer-places' ] );
 			foreach ( $validFooterLinks as $aLink ) {
 				$html .= Html::rawElement(
 					'li',
-					[ 'id' => Sanitizer::escapeId( $aLink ) ],
+					[ 'id' => 'footer-info-' . Sanitizer::escapeId( $aLink ) ],
 					$this->get( $aLink )
 				);
 			}
