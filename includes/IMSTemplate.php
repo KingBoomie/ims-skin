@@ -406,7 +406,7 @@ class IMSTemplate extends BaseTemplate {
 		}
 		// END hack
 
-		$labelId = Sanitizer::escapeId( "p-$name-label" );
+		$labelId = Sanitizer::escapeIdForAttribute( "p-$name-label" );
 
         // Return an element only if there are items in the list.
 		if ( is_array( $content ) ) {
@@ -429,7 +429,7 @@ class IMSTemplate extends BaseTemplate {
    		    $html = Html::rawElement( 'nav', [
 				'role' => 'navigation',
 				'class' => 'mw-portlet',
-				'id' => Sanitizer::escapeId( 'p-' . $name ),
+				'id' => Sanitizer::escapeIdForAttribute( 'p-' . $name ),
 				'title' => Linker::titleAttrib( 'p-' . $name ),
 				'aria-labelledby' => $labelId
 			],
@@ -495,7 +495,7 @@ class IMSTemplate extends BaseTemplate {
 			foreach ( $validFooterLinks as $aLink ) {
 				$html .= Html::rawElement(
 					'li',
-					[ 'id' => Sanitizer::escapeId( $aLink ) ],
+					[ 'id' => Sanitizer::escapeIdForAttribute( $aLink ) ],
 					$this->get( $aLink )
 				);
 			}
